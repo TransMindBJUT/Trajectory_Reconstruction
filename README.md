@@ -1,10 +1,6 @@
 # Selective Trajectory Reconstruction with Interaction-Supported Moderate Deviation (ISMD) Preservation
 
 <p align="center">
-  <a href="https://transmindbjut.github.io/Trajectory_Reconstruction/"><strong>🌐 Live Project Page</strong></a>
-</p>
-
-<p align="center">
   <img src="docs/static/images/fig1.jpg" alt="Conceptual framework of selective trajectory reconstruction" width="85%">
 </p>
 
