@@ -44,13 +44,21 @@
   <main>
     <section class="section" id="dynamic-comparison">
       <div class="container">
-        <h2>Dynamic Comparison of<br>Interaction-Supported Moderate Deviation (ISMD) Preservation</h2>
+        <h2>Dynamic Comparison: Preserving Interaction-Supported<br>Moderate Deviations (ISMD)</h2>
         <p class="section-lead lead-wide">
-          The animation illustrates how the Proposed model preserves interaction-supported moderate deviations (ISMD),<br>while representative baseline methods either smooth them away or introduce local kinematic distortions.
+          When two vehicles interact — one crossing the other's path or passing closely — the involved vehicle briefly adjusts its motion. This adjustment is a genuine, interaction-driven deviation, not sensor noise, and it should survive reconstruction. The animation aligns both scenarios to the interaction moment (flag = 2) and shows how seven methods handle that deviation: the Proposed model preserves it, while baseline methods smooth it away or distort it.
         </p>
         <div class="media-card">
           <img src="static/videos/composite_U8_C3_smooth.gif" alt="Dynamic comparison of trajectory reconstruction methods across intersection and proximity interaction scenarios">
           <p class="caption" style="margin-bottom: 12px;">Intersection &amp; proximity interaction scenarios — per-model layout (7 models × ISMD metric)</p>
+        </div>
+        <div class="process-flow">
+          <h3 class="process-title">How to read it</h3>
+          <ul style="margin: 0; padding-left: 22px;">
+            <li><strong>Top / bottom rows</strong> — seven methods (RAW → Wavelet-SG); each panel plots the vehicle's ISMD-trigger metric (e.g., jerk) around the interaction moment, between the comfort (green) and extreme (red) limits.</li>
+            <li><strong>Middle maps</strong> — the real trajectories: blue = ego vehicle, orange = interacting target; the black flag = 2 point marks the interaction moment.</li>
+            <li><strong>At flag = 2</strong>, the Proposed panel keeps the moderate deviation (the curve's spike), while smoothing baselines (LSTM, SG) flatten it.</li>
+          </ul>
         </div>
       </div>
     </section>
