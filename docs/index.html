@@ -46,7 +46,7 @@
       <div class="container">
         <h2>Dynamic Comparison: Preserving Interaction-Supported<br>Moderate Deviations (ISMD)</h2>
         <p class="section-lead lead-wide">
-          When two vehicles interact — one crossing the other's path or passing closely — the involved vehicle briefly adjusts its motion. This adjustment is a genuine, interaction-driven deviation, not sensor noise, and it should survive reconstruction. The animation aligns both scenarios to the interaction moment (flag = 2) and shows how seven methods handle that deviation: the Proposed model preserves it, while baseline methods smooth it away or distort it.
+          When two vehicles interact — one crossing the other's path or passing closely — the involved vehicle briefly adjusts its motion. This adjustment appears as a moderate deviation in the kinematic signal: it exceeds the comfort threshold but remains below the extreme threshold. When such a deviation is driven by a real interaction, it should be preserved during reconstruction rather than smoothed away. The animation aligns both scenarios to the interaction moment (flag = 2) and shows how seven methods handle it: the Proposed model preserves the deviation, while baseline methods smooth it away or distort it.
         </p>
         <div class="media-card">
           <img src="static/videos/composite_U8_C3_smooth.gif" alt="Dynamic comparison of trajectory reconstruction methods across intersection and proximity interaction scenarios">
