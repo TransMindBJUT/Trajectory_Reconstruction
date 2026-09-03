@@ -267,7 +267,7 @@ def setup_map(ax, scn, d, range_geo, shared_lim):
     Lf.set_visible(False)
     labels.append((Lf, 0.0))
 
-    title = "(a) Intersection scenario" if scn["boundary"] else "(b) Proximity interaction scenario"
+    title = "(a) Intersection interaction scenario" if scn["boundary"] else "(b) Proximity interaction scenario"
     ax.set_title(title, fontsize=15, fontweight="bold", pad=8, loc="left")
     ax.set_xlim(*shared_lim[0])
     ax.set_ylim(*shared_lim[1])
@@ -383,9 +383,9 @@ def make_composite_gif(data, range_geo, smooth=False):
     ax_c3 = fig.add_subplot(maps[0, 1])
     bot_axes = [fig.add_subplot(bot[0, c]) for c in range(7)]
 
-    fig.text(0.02, 0.888, "(a) Intersection interaction", rotation=90,
+    fig.text(0.05, 0.888, "(a) Intersection interaction", rotation=90,
              ha="center", va="center", fontsize=12, fontweight="bold")
-    fig.text(0.02, 0.102, "(b) Proximity interaction", rotation=90,
+    fig.text(0.05, 0.102, "(b) Proximity interaction", rotation=90,
              ha="center", va="center", fontsize=12, fontweight="bold")
 
     du8_min = max(float(u8["t_rel"][0]), -WIN_S)
