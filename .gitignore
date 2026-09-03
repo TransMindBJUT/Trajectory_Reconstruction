@@ -1,0 +1,9 @@
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# Generated / intermediate outputs (caches, stale GIF exports)
+code/*.npz
+code/*.png
+code/composite_U8_C3.gif
+code/composite_U8_C3_smooth.gif

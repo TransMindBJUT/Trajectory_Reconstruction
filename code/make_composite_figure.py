@@ -50,7 +50,9 @@ COMP_LABEL = {"RAW": "RAW", "Proposed": "Proposed", "KCO": "KCO", "LSTM": "LSTM"
 COMP_COLOR = {"RAW": "#555555", "Proposed": "#E53935", "KCO": "#089099",
               "LSTM": "#1F77B4", "KF": "#7B1FA2", "SG": "#E28E2C", "WaveletSG": "#C2185B"}
 
-OUT_GIF = os.path.join(os.path.dirname(os.path.abspath(__file__)), "composite_U8_C3.gif")
+OUT_GIF = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                       "..", "docs", "static", "videos",
+                                       "composite_U8_C3.gif"))
 
 _MNAME = {"jerk": "jerk", "ax": "ax", "ay": "ay", "speed": "speed"}
 
@@ -372,14 +374,19 @@ def make_composite_gif(data, range_geo, smooth=False):
     fig = plt.figure(figsize=(17.8, 14.0), dpi=110)
     # three explicit horizontal bands; the maps band is shifted down a touch
     # (top/bottom model boxes keep their original positions)
-    top = fig.add_gridspec(1, 7, wspace=0.20, left=0.042, right=0.985, top=0.96, bottom=0.8165)
-    maps = fig.add_gridspec(1, 2, wspace=0.10, left=0.042, right=0.985, top=0.739, bottom=0.165)
-    bot = fig.add_gridspec(1, 7, wspace=0.20, left=0.042, right=0.985, top=0.1735, bottom=0.03)
+    top = fig.add_gridspec(1, 7, wspace=0.20, left=0.10, right=0.985, top=0.96, bottom=0.8165)
+    maps = fig.add_gridspec(1, 2, wspace=0.10, left=0.10, right=0.985, top=0.739, bottom=0.165)
+    bot = fig.add_gridspec(1, 7, wspace=0.20, left=0.10, right=0.985, top=0.1735, bottom=0.03)
 
     top_axes = [fig.add_subplot(top[0, c]) for c in range(7)]
     ax_u8 = fig.add_subplot(maps[0, 0])
     ax_c3 = fig.add_subplot(maps[0, 1])
     bot_axes = [fig.add_subplot(bot[0, c]) for c in range(7)]
+
+    fig.text(0.02, 0.888, "(a) Intersection interaction", rotation=90,
+             ha="center", va="center", fontsize=12, fontweight="bold")
+    fig.text(0.02, 0.102, "(b) Proximity interaction", rotation=90,
+             ha="center", va="center", fontsize=12, fontweight="bold")
 
     du8_min = max(float(u8["t_rel"][0]), -WIN_S)
     du8_max = min(float(u8["t_rel"][-1]), WIN_S)
@@ -465,5 +472,4 @@ if __name__ == "__main__":
     data, _ = mif.load_scenarios()
     data = load_extra_models(data)
     range_geo = mif.load_range_poly()
-    make_composite_gif(data, range_geo)                 # original (holds at flag2/t1/t2)
     make_composite_gif(data, range_geo, smooth=True)    # smooth, no pauses
